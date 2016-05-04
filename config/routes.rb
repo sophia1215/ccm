@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+  get 'albums' => 'albums#index'
+  get 'albums/new' => 'albums#new'
+  get 'albums/:id' => 'albums#show', as: :album
+  post 'albums' => 'albums#create'
+
+  get 'signup'  => 'users#new'
+  get '/login'  => 'sessions#new'
+  post 'login'  => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+
+  resources :users
+
+  root 'albums#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
